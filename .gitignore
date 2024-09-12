@@ -1,0 +1,8 @@
+/services/gateway/node_modules
+/services/gateway/.env
+
+/services/message/node_modules
+/services/message/.env
+
+/services/notification/node_modules
+/services/notication/.env
