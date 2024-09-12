@@ -3,12 +3,11 @@ import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
 import { Sequelize } from "sequelize";
-import { PostgresDialect } from '@sequelize/postgres';
 import redis from "redis";
 //
-import constants from "./constants.js";
+import constants from "./constants.mjs";
 //import PackageController from "../modules/package/index.js";
-import config from "../config.js";
+import config from "../config.mjs";
 
 
 
@@ -41,21 +40,23 @@ class Middleware {
 
     async dbInit() {
         try{
-            const dbName = "postgres" //config.DB_NAME;
-            const dbUser = "ominicanal"; // config.DB_USERNAME;
+            const dbName = "ominicanal" //config.DB_NAME;
+            const dbUser = "postgres"; // config.DB_USERNAME;
             const dbHost = "localhost"; //config.DB_HOST;
             const dbPassword = "admin"; //DB_PASSWORD
             const dbPort = 5432;
+            
             const db = new Sequelize(
-                {   
-                    database: dbName,
-                    user: dbUser,
-                    password: dbPassword,
-                    host: dbHost,
-                    port: dbPort,
-                    dialect: 'postgres',
+                dbName,
+                dbUser,
+                dbPassword,
+                {
+                  host: dbHost,
+                  port: dbPort,
+                  dialect: 'postgres'
                 }
-            )
+              );
+           
             await db.sync();
         }catch(err){
             console.error("postgres Error", err)

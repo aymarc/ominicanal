@@ -1,12 +1,12 @@
 import express from "express";
-import Middleware from "./utils/middleware.js";
+import Middleware from "./utils/middleware.mjs";
 
 
 //
 const app = express();
 const middleware = new Middleware(app, process.env);
 const PORT = process.env.PORT;
-middleware.dbInit();
+//await middleware.dbInit();
 middleware.routesInit();
 middleware.catchNotFoundError();
 middleware.catchErrors();

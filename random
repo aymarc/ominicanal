@@ -1,0 +1,30 @@
+npm install --save sequelize
+
+npm install --save-dev sequelize-cli
+
+npx sequelize-cli init
+
+// Connection parameters
+const sequelize = new Sequelize('database', 'username', 'password')
+
+// with URI
+const sequelize = new Sequelize(process.env.POSTGRESQL_DB_URI)
+
+
+
+docker run -d --name postgresCont -p 5432:5432 -e POSTGRES_PASSWORD=admin postgres
+
+//build container
+docker ps
+
+//access container
+docker exec -it postgresCont bash
+
+
+psql -h localhost -U postgres
+
+psql -h 127.0.0.2:5432 -U postgres
+
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' e45fb5e5a9fb
+
+

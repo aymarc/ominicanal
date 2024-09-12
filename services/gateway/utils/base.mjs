@@ -1,7 +1,7 @@
 import { Router } from "express";
 //
 import Validator from "./validator.js";
-import constants from "./constants.js";
+import constants from "./constants.mjs";
 import { ValidationError } from "./error.js";
 
 const _v_ = new Validator();
